@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from "axios";
 import {LeagueItem} from "./LeagueItem";
 import {LeagueContext} from "../context";
+import {getLeagues} from "../api/config";
 
 
 const Wrapper = styled.section`
@@ -19,18 +20,12 @@ export const LeagueList = () => {
 
     useEffect(() => {
         if(!allLeagues.length) {
-            const options = {
-                method: 'GET',
-                headers: {
-                    'X-Auth-Token': '6514a50db6064d86a774da3072668946'
-                }
-            }
-            axios.get('https://api.football-data.org/v2/competitions/', options)
-                .then(response => {
-                    let data = response.data.competitions;
-                    setAllLeagues(data);
-                })
-        }
+             getLeagues()
+                 .then(response => {
+                   let data = response.data.competitions;
+                   setAllLeagues(data);
+               })
+       }
     }, [])
 
 
