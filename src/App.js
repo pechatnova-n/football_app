@@ -1,10 +1,9 @@
 import './App.css';
-import React, {useState} from "react";
-import {Header} from "./components/Header";
-import {LeagueList} from "./components/LeagueList";
-
-
-
+import React, {useContext, useState} from "react";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {LeagueContext} from "./context";
+import {Layout} from "./pages/Layout";
+import {HomePage} from "./pages/HomePage";
 
 
 function App() {
@@ -12,25 +11,21 @@ function App() {
     console.log(allLeagues);
 
 
-   /* const options = {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': '6514a50db6064d86a774da3072668946'
-        }
-    };
-
-    fetch('https://api.football-data.org/v2/competitions/', options)
-        .then(response => response.json())
-        .then(data => console.log(data.competitions))
-        .then(data => setAllLeagues(data.competitions))*/
-
   return (
-    <div className="app">
-      <Header />
-      <div>
-          <LeagueList allLeagues={allLeagues} setAllLeagues={setAllLeagues}/>
-      </div>
-    </div>
+      <LeagueContext.Provider value={{
+          allLeagues,
+          setAllLeagues,
+      }}>
+          <BrowserRouter>
+              <div className="app">
+                  <Routes>
+                      <Route path='/' element={<Layout />}>
+                          <Route index element={<HomePage  />} />
+                      </Route>
+                  </Routes>
+              </div>
+          </BrowserRouter>
+      </LeagueContext.Provider>
   );
 }
 

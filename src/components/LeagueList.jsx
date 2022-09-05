@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from "axios";
 import {LeagueItem} from "./LeagueItem";
+import {LeagueContext} from "../context";
 
 
 const Wrapper = styled.section`
@@ -10,10 +11,11 @@ const Wrapper = styled.section`
     flex-wrap: wrap;
     row-gap: 20px;
     column-gap: 20px;
-    padding-top: 20px;
 `
 
-export const LeagueList = ({allLeagues, setAllLeagues}) => {
+export const LeagueList = () => {
+
+    const {allLeagues, setAllLeagues} = useContext(LeagueContext);
 
     useEffect(() => {
         if(!allLeagues.length) {
