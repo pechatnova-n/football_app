@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import logo_lig from '../images/logo_lig.jpg';
 
+
 const Wrapper = styled.div`
-    width: 11%;  
+    width: 150px;  
     display; flex;
     flex-direction: column;
     align-items: center;
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
     border-radius: 0 0 3px 3px;
     padding: 7px 7px 10px 7px;
     background-color: #FFFFFF;
+    cursor: pointer;
 `
 const Image = styled.img`
     display: block;
@@ -38,9 +40,9 @@ const Region = styled.span`
 `
 
 
-export const LeagueItem = ({emblemUrl, name, region}) => {
+export const LeagueItem = ({emblemUrl, name, region, onClick}) => {
     return (
-        <Wrapper>
+        <Wrapper onClick={onClick}>
             <Image src={emblemUrl ? emblemUrl : logo_lig}/>
             <Name>{name}</Name>
             <Region>{region}</Region>

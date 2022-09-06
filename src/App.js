@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {LeagueContext} from "./context";
 import {Layout} from "./pages/Layout";
 import {HomePage} from "./pages/HomePage";
+import {LeagueDetail} from "./components/LeagueDetail";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                   <Routes>
                       <Route path='/' element={<Layout />}>
                           <Route index element={<HomePage  />} />
+                          <Route element={<LeagueDetail />} path='/leagues/:name' />
                       </Route>
                   </Routes>
               </div>
