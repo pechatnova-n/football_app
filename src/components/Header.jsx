@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import {NavLink} from "react-router-dom";
 
 const HeaderWrapper = styled.div`
     height: 80px;
     display: flex;
     justify-content: center;
+    column-gap: 10px;
     align-items: center;
     background-color: #A6DF58;
 `
@@ -17,7 +19,8 @@ const Logo = styled.p`
 export const Header = () => {
     return (
         <HeaderWrapper>
-            <Logo>Футбольная статистика</Logo>
+            <NavLink to='/'>Лиги</NavLink>
+            <NavLink to='/teams'>Команды</NavLink>
         </HeaderWrapper>
     );
 };

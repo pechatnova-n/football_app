@@ -17,6 +17,13 @@ export const searchByLeague = (name) => {
     return axios.get(`${BASE_URL}competitions/${name}`, options);
 }
 
+export const getMatches = (id) => {
+    return axios.get(`${BASE_URL}competitions/${id}/matches`, options);
+}
+
+export const getTeams = () => {
+    return axios.get(`${BASE_URL}teams`, options);
+}
 
 
 

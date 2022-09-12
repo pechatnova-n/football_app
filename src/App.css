@@ -15,6 +15,12 @@
     margin: 0 auto;
 }
 
-.outlet{
+.outlet {
     padding: 25px 0;
+}
+.title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
