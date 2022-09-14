@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {getMatches, getTeams} from "../api/config";
+import {getMatches} from "../api/config";
 import styled from 'styled-components';
 import {useFetching} from "./hooks/useFetching";
 import {Loader} from "./utils/Loader/Loader";
+import {MatchRow} from "./MatchRow";
 
-const Wrapper = styled.section`
+/*const Wrapper = styled.section`
     display: grid;
     grid-template-columns: 2fr 5fr 3fr 1fr 3fr 2fr;
 `
-const Cell = styled.div``
+const Cell = styled.div``*/
 
-export const Row = ({ dataDay, time, stage, homeTeam, score, awayTeam, status }) => {
+/*export const Row = ({ dataDay, time, stage, homeTeam, score, awayTeam, status }) => {
     return (
         <Wrapper>
             <Cell>{dataDay} {time}</Cell>
@@ -21,7 +22,7 @@ export const Row = ({ dataDay, time, stage, homeTeam, score, awayTeam, status })
             <Cell>{status}</Cell>
         </Wrapper>
     )
-}
+}*/
 
 export const LeagueInfo = (props) => {
     const {
@@ -29,7 +30,7 @@ export const LeagueInfo = (props) => {
         seasons,
     } = props;
 
-    const [matches, setMatches] = useState(null);
+    const [matches, setMatches] = useState([]);
 
 
     const [fetchGetMatches, isLoading, error] = useFetching(async () => {
@@ -41,7 +42,7 @@ export const LeagueInfo = (props) => {
         fetchGetMatches();
     }, []);
 
-
+    console.log(matches)
     return (
                 <div>
                     <div className="title">{name} ({props?.area?.name ? props.area.name : "Регион не указан" }) </div>
@@ -49,12 +50,6 @@ export const LeagueInfo = (props) => {
                         {isLoading ?
                             <Loader /> :
                             <div>
-                                {/*<div>
-                <select>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                </select>
-            </div>*/}
                                 <div style={{'marginBottom': '20px'}}>
                                     <table>
                                         <tbody>
@@ -75,22 +70,24 @@ export const LeagueInfo = (props) => {
                                 </div>
                                 <div>
                                     <div className='title'>Турнирная таблица</div>
-                                    {matches ? matches.map(m => {
-                                        let dataDayCommon = m.utcDate.split("T");
-                                        let dataDay = dataDayCommon[0].split('-').reverse().join('-');
-                                        let time = dataDayCommon[1].slice(0, -4);
-
-                                        return (
-                                            <Row key={m.id}
-                                                 dataDay={dataDay}
-                                                 time={time}
-                                                 stage={m.stage}
-                                                 homeTeam={m.homeTeam}
-                                                 score={m.score}
-                                                 awayTeam={m.awayTeam}
-                                                 status={m.status}
-                                            /> )
-                                    }) : ''}
+                                    <div>
+                                        {matches ? matches.map(m => {
+                                            let dataDayCommon = m.utcDate.split("T");
+                                            let dataDay = dataDayCommon[0].split('-').reverse().join('-');
+                                            let time = dataDayCommon[1].slice(0, -4);
+                                            const data = {
+                                                id: m.id,
+                                                name: m.stage,
+                                                awayTeam: m.awayTeam.name,
+                                                homeTeam: m.homeTeam.name,
+                                                status: m.status,
+                                                dataDay: dataDay,
+                                                time: time,
+                                                score: m.score,
+                                            }
+                                            return <MatchRow key={m.id} {...data} />
+                                        }) : ''}
+                                    </div>
                                 </div>
                             </div>
                         }
@@ -99,3 +96,4 @@ export const LeagueInfo = (props) => {
     );
 };
 
+/*<MatchRow key={m.id} {...data} />*/

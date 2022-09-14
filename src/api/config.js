@@ -25,6 +25,11 @@ export const getTeams = () => {
     return axios.get(`${BASE_URL}teams`, options);
 }
 
+export const getTeamMatches = (teamId) => {
+    console.log(teamId)
+    return axios.get(`${BASE_URL}teams/${teamId}/matches/`, options);
+}
+
 
 
 

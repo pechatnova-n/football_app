@@ -5,6 +5,7 @@ import {Layout} from "./pages/Layout";
 import {LeagueDetail} from "./components/LeagueDetail";
 import {LeagueList} from "./components/LeagueList";
 import {TeamsList} from "./components/TeamsList";
+import {TeamsMatches} from "./components/TeamsMatches";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                           <Route index element={<LeagueList allLeagues={allLeagues} setAllLeagues={setAllLeagues}  />} />
                           <Route element={<LeagueDetail />} path='/leagues/:name' />
                           <Route element={<TeamsList />} path='/teams' />
+                          <Route element={<TeamsMatches />} path='/teams/:teamId' />
                       </Route>
                   </Routes>
               </div>

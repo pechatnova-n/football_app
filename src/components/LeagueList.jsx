@@ -58,8 +58,7 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
                             region: item.area.name,
                             code: item.code,
                         }
-                        return <LeagueItem key={item.id}
-                                           onClick={() => navigate(`/leagues/${item.code}`, {replace: false})} {...info}  />
+                        return <LeagueItem key={item.id} onClick={() => navigate(`/leagues/${item.code}`, {replace: false})} {...info}  />
                     })
                 }
             </Wrapper>

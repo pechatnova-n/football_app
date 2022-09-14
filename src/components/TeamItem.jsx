@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import noImage from '../images/noImage.jpg';
 
-
-
 const Item = styled.div`
     display: flex;
     flex-direction: column;
@@ -19,6 +17,11 @@ const Item = styled.div`
     padding: 7px 7px 10px 7px;
     background-color: #FFFFFF;
     cursor: pointer;
+    transition: box-shadow 0.5s; 
+    &:hover {
+        box-shadow: 1px 3px 7px 1px #DDD;
+        transition: box-shadow 0.5s; 
+   }
 `
 
 const Image = styled.img`
@@ -32,28 +35,33 @@ const Text = styled.p`
     display: block;
     font-size: 14px;
     text-align: center;
-    margin-bottom: 10px;
     word-break: break-all;
 `
 const ExternalLink = styled.a`
-    display : block,
-     fontSize: 12px,
-    textAlign: center,
-    marginBottom: 10px,
-    wordBreak: break-all,
-    color: #000,
-    textDecoration: underline,
+    display : block;
+    font-size: 11px;
+    text-align: center;
+    margin-bottom: 10px;
+    word-break: break-all;
+    color: #000;
+    text-decoration: none;
+    &:hover {
+    text-decoration: underline;
+    color: #8DC63F;
+      &:hover {
+        transition: text-decoration, color 0.2s; 
+   }
 `
 
 
 
-export const TeamItem = ({name, area, flag, website}) => {
+export const TeamItem = ({name, area, flag, website, onClick}) => {
     return (
-        <Item>
+        <Item onClick={onClick}>
             <Image src={flag ? flag : noImage} />
             <Text>{name}</Text>
             <Text>{area}</Text>
-           {/* <ExternalLink href={website} target='_blank'>{website}</ExternalLink>*/}
+            <ExternalLink href={website} target='_blank'>{website}</ExternalLink>
         </Item>
     );
 };

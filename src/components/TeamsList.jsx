@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {TeamItem} from "./TeamItem";
 import {useFetching} from "./hooks/useFetching";
 import {Loader} from "./utils/Loader/Loader";
+import {useNavigate} from "react-router";
 
 const Wrapper = styled.section`
    display: flex;
@@ -15,6 +16,7 @@ const Wrapper = styled.section`
 
 
 export const TeamsList = () => {
+    const navigate =  useNavigate();
     const [teams, setTeams] = useState([]);
 
     const [fetchGetTeams, isLoading, error] = useFetching(async () => {
@@ -33,7 +35,14 @@ export const TeamsList = () => {
                 ? <Loader />
                 : <Wrapper>
                     {teams.map(t => {
-                        return <TeamItem key={t.id} name={t.name} area={t.area.name} flag={t.crestUrl} website={t.website} />
+                        const info = {
+                            id: t.id,
+                            name: t.name,
+                            area: t.area.name,
+                            flag: t.crestUrl,
+                            website: t.website
+                        }
+                        return <TeamItem key={t.id} onClick={() => navigate(`/teams/${t.id}`, {replace: false})} {...info} />
                     })}
                 </Wrapper>
             }
