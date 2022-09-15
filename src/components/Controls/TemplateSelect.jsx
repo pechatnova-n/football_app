@@ -1,13 +1,14 @@
+/*
 import React, {useEffect, useState} from 'react';
 import {SelectItem} from "./SelectItem";
 
-export const CustomSelect = ({onChange}) => {
-    const [region, setRegion] = useState('');
+export const CustomSelect = ({value, setValue, onChange, options, placeholder}) => {
+   /!* const [region, setRegion] = useState('');*!/
 
     useEffect(() => {
-        const regionValue = region?.value || '';
-        onChange(regionValue);
-    }, [region]);
+        const val = value?.value || '';
+        onChange(val);
+    }, [value]);
 
     const options = [
         { value: 'Asia', label: 'Азия' },
@@ -26,7 +27,7 @@ export const CustomSelect = ({onChange}) => {
         <div>
             <SelectItem options={options}
                         onChange={setRegion}
-                        placeholder='Выберите регион'
+                        placeholder={placeholder}
                         isClearable
                         isSearchable={false}
                         value={region} />
@@ -34,3 +35,4 @@ export const CustomSelect = ({onChange}) => {
     );
 };
 
+*/

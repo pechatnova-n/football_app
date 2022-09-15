@@ -29,6 +29,8 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
         setFilteredByRegion(data);
     }
 
+
+
     useEffect(() => {
         if(!allLeagues.length) {
              getLeagues()
@@ -44,14 +46,12 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
     }, [allLeagues]);
 
 
-    //console.log(filteredByRegion)
 
     return (
         <div>
             <CustomSelect onChange={handleSelect} />
             <Wrapper>
-                {
-                    filteredByRegion.map(item => {
+                {filteredByRegion.map(item => {
                         const info = {
                             emblemUrl: item.emblemUrl,
                             name: item.name,
