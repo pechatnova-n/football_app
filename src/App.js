@@ -12,7 +12,7 @@ function App() {
     const [allLeagues, setAllLeagues] = useState([]);
 
   return (
-          <BrowserRouter>
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
               <div className="app">
                   <Routes>
                       <Route path='/' element={<Layout />}>
