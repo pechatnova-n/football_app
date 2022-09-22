@@ -1,38 +1,23 @@
-/*
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {SelectItem} from "./SelectItem";
 
-export const CustomSelect = ({value, setValue, onChange, options, placeholder}) => {
-   /!* const [region, setRegion] = useState('');*!/
+export const TemplateSelect = ({valueState, setValueState, onChange, options, placeholder}) => {
 
     useEffect(() => {
-        const val = value?.value || '';
+        const val = valueState?.value || '';
         onChange(val);
-    }, [value]);
+    }, [valueState]);
 
-    const options = [
-        { value: 'Asia', label: 'Азия' },
-        { value: 'Africa', label: 'Африка' },
-        { value: 'Australia', label: 'Австралия' },
-        { value: 'Europe', label: 'Европа' },
-        { value: 'World', label: 'Мир' },
-        { value: 'Oceania', label: 'Океания' },
-        { value: 'N/C America', label: 'Северная Америка' },
-        { value: 'South America', label: 'Южная Америка' },
-    ]
 
     return (
-
-
         <div>
             <SelectItem options={options}
-                        onChange={setRegion}
+                        onChange={setValueState}
                         placeholder={placeholder}
                         isClearable
                         isSearchable={false}
-                        value={region} />
+                        value={valueState} />
         </div>
     );
 };
 
-*/

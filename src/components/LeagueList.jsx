@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {LeagueItem} from "./LeagueItem";
 import {getLeagues} from "../api/config";
 import {useNavigate} from "react-router";
-import {CustomSelect} from "./Controls/CustomSelect";
+import {TemplateSelect} from "./Controls/TemplateSelect";
 
 
 const Wrapper = styled.section`
@@ -18,8 +18,17 @@ const Wrapper = styled.section`
 export const LeagueList = ({allLeagues, setAllLeagues}) => {
     const [filteredByRegion, setFilteredByRegion] = useState(allLeagues);
     const navigate =  useNavigate();
-
-
+    const [region, setRegion] = useState('');
+    const options = [
+        { value: 'Asia', label: 'Азия' },
+        { value: 'Africa', label: 'Африка' },
+        { value: 'Australia', label: 'Австралия' },
+        { value: 'Europe', label: 'Европа' },
+        { value: 'World', label: 'Мир' },
+        { value: 'Oceania', label: 'Океания' },
+        { value: 'N/C America', label: 'Северная Америка' },
+        { value: 'South America', label: 'Южная Америка' },
+    ]
 
     const handleSelect = (region) => {
         let data = [...allLeagues];
@@ -28,8 +37,6 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
         }
         setFilteredByRegion(data);
     }
-
-
 
     useEffect(() => {
         if(!allLeagues.length) {
@@ -46,10 +53,15 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
     }, [allLeagues]);
 
 
-
     return (
         <div>
-            <CustomSelect onChange={handleSelect} />
+            <TemplateSelect
+                valueState={region}
+                setValueState={setRegion}
+                onChange={handleSelect}
+                options={options}
+                placeholder='Выберите регион'
+            />
             <Wrapper>
                 {filteredByRegion.map(item => {
                         const info = {
@@ -68,3 +80,4 @@ export const LeagueList = ({allLeagues, setAllLeagues}) => {
         
     );
 };
+

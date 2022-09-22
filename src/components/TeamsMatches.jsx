@@ -5,20 +5,18 @@ import {useNavigate, useParams} from "react-router";
 import {getTeamMatches} from "../api/config";
 import {MatchRow} from "./MatchRow";
 
-
 export const TeamsMatches = () => {
 
     const {teamId} = useParams();
     const navigate = useNavigate();
     const [teamMatches, setTeamMatches] = useState([]);
 
-
     useEffect(() => {
         getTeamMatches(teamId).then(response => {
             setTeamMatches(response.data.matches);
         })
     }, [teamId])
-    console.log(teamMatches)
+
 
     return (
         <div>

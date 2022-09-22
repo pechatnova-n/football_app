@@ -8,14 +8,14 @@ const Wrapper = styled.div`
     grid-column-gap: 10px;
     font-size: 11px;
     align-items: center;
-    padding: 5px 0;
+    padding: 5px;
     &:nth-child(odd) {
         background-color: #F2F2F2;
     }
    
     
     @media(min-width: 767px) {
-        grid-template-columns: 4fr 4fr 4fr 2fr 4fr 3fr;
+        grid-template-columns: 4fr 4fr 4fr 2fr 4fr 2fr;
         grid-row-gap: 20px;
         grid-column-gap: 10px;
         font-size: 14px;

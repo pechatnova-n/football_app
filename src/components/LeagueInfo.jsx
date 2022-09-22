@@ -4,7 +4,6 @@ import {useFetching} from "./hooks/useFetching";
 import {Loader} from "./utils/Loader/Loader";
 import {MatchRow} from "./MatchRow";
 
-
 export const LeagueInfo = (props) => {
     const {
         name,
@@ -12,7 +11,6 @@ export const LeagueInfo = (props) => {
     } = props;
 
     const [matches, setMatches] = useState([]);
-
 
     const [fetchGetMatches, isLoading, error] = useFetching(async () => {
         const response = await getMatches(props.id);
@@ -32,27 +30,12 @@ export const LeagueInfo = (props) => {
                         {isLoading ?
                             <Loader /> :
                             <div>
-
+                               <div className="text">
+                                   <div>Старт сезона: {seasons ? seasons[0].startDate.split("-").reverse().join("-") : ''}</div>
+                                   <div>Конец сезона: {seasons ? seasons[0].endDate.split("-").reverse().join("-"): ''}</div>
+                                   <div>Текущий день матча: {seasons ? seasons[0].currentMatchday : ''}</div>
+                               </div>
                                 <div>
-                                    <div style={{'marginBottom': '20px'}}>
-                                        <table>
-                                            <tbody>
-                                            <tr>
-                                                <td>Старт сезона</td>
-                                                <td>{seasons ? seasons[0].startDate.split("-").reverse().join("-") : ''}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Конец сезона</td>
-                                                <td>{seasons ? seasons[0].endDate.split("-").reverse().join("-"): ''}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Текущий день матча</td>
-                                                <td>{seasons ? seasons[0].currentMatchday : ''}</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div>
                                         <div className='title'>Турнирная таблица</div>
                                         <div>
                                             {matches ? matches.map(m => {
@@ -73,7 +56,7 @@ export const LeagueInfo = (props) => {
                                             }) : ''}
                                         </div>
                                     </div>
-                                </div>
+
                             </div>
                         }
                     </>

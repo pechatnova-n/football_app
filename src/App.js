@@ -10,8 +10,6 @@ import {TeamsMatches} from "./components/TeamsMatches";
 
 function App() {
     const [allLeagues, setAllLeagues] = useState([]);
-    //console.log(allLeagues);
-
 
   return (
           <BrowserRouter>
