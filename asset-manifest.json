@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/football_app/static/css/main.cf044278.css",
+    "main.js": "/football_app/static/js/main.2f5c9f41.js",
+    "static/js/787.f6acc010.chunk.js": "/football_app/static/js/787.f6acc010.chunk.js",
+    "static/media/football_bg.jpg": "/football_app/static/media/football_bg.9cf45ada2a83fc40f296.jpg",
+    "static/media/logo_lig.jpg": "/football_app/static/media/logo_lig.3e7f17ede4e642d217ad.jpg",
+    "static/media/noImage.jpg": "/football_app/static/media/noImage.cba7ab748ea1ae557cc7.jpg",
+    "index.html": "/football_app/index.html",
+    "main.cf044278.css.map": "/football_app/static/css/main.cf044278.css.map",
+    "main.2f5c9f41.js.map": "/football_app/static/js/main.2f5c9f41.js.map",
+    "787.f6acc010.chunk.js.map": "/football_app/static/js/787.f6acc010.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf044278.css",
+    "static/js/main.2f5c9f41.js"
+  ]
+}
